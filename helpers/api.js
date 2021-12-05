@@ -11,7 +11,6 @@ function apiURL() {
   const uri = 'https://www.sporttv.pt/api/channels/epg';
   const channels = '&idCanal=7133,727,728,729,5406,5422,7386';
   const limit = '&numeroRegistos=600';
-  const media = '&tipoMedia=thumbnail';
   return proxy + uri + initDate + endDate + channels + limit;
 }
 
@@ -21,16 +20,15 @@ function normalizeData(feature) {
   const start = new Date()
   start.setTime(feature.data)
   end.setTime(feature.data + feature.duracao)
-  const isNow = now >= start && now < end ? ' now' : ''
-  const validChannelName = feature.canal.nome.replace(/\s/g,'_')
+  const isNow = now >= start && now < end
   return {
     channel: feature.canal.nome,
-    channelClasses: `channel ${validChannelName}`,
     day: start.toDateString(),
-    divClasses: `event ${feature.tipoEmissao + isNow }`,
     description: feature.descricao,
+    emissionType: feature.tipoEmissao,
     finish: end.toLocaleTimeString('pt-PT'),
     init: start.toLocaleTimeString('pt-PT'),
+    isNow,
     sport: feature.modalidade.nomeModalidade,
     title: feature.evento.nome,
   }

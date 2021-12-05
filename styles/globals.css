@@ -46,9 +46,12 @@ span {
   font-size: 0.8em;
 }
 span.live {
-  margin-left: 1em;
   padding: 0 1em;
   background-color: #ffda00;
+}
+span.now {
+  padding: 0 1em;
+  background-color: #ff546e;
 }
 a.anchor::before {
   display: block;

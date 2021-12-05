@@ -1,19 +1,23 @@
 import { Footer } from '../components/footer'
-import { Maincontent } from '../components/maincontent'
+import { Features } from '../components/features'
 import { Navbar } from '../components/navbar'
 import { getFeatures } from '../helpers/api'
 import React from 'react'
 
 export default function Home({ features }) {
-  setTimeout(() => {
-    const now = document.getElementsByClassName('now')[0]
-    if (now) now.scrollIntoView()
-  }, 2000)
+  // scroll to features now on TV
+  if (process.browser) {
+    setTimeout(() => {
+      const now = document.getElementsByClassName('now')[0]
+      if (now) now.scrollIntoView()
+    }, 2000)
+  }
+  // events filter { sport: 'FUTEBOL } or { channel: 'NBA TV' }
   const [ filter, setFilter ] = React.useState({});
   return (
     <>
       <Navbar features={features} setFilter={setFilter} />
-      <Maincontent features={features} filter={filter} />
+      <Features features={features} filter={filter} />
       <Footer />
     </>
   )

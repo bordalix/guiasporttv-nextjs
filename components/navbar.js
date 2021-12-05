@@ -10,8 +10,10 @@ export function Navbar({ features, setFilter }) {
     setFilter(aux)
     resetOtherSelect(target.id)
   }
+  // get array of unique sports
   const sports = features.map(f => f.sport)
     .filter((v, i, a) => a.indexOf(v) === i)
+    // get array of unique channels
   const channels = features.map(f => f.channel)
     .filter((v, i, a) => a.indexOf(v) === i)
   return (

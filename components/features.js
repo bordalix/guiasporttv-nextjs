@@ -11,7 +11,7 @@ function filteredFeatures(features, filter) {
   return features.filter(f => filterData(f, filter))
 }
 
-export function Maincontent({ features, filter }) {
+export function Features({ features, filter }) {
   return (
     <div id="main_content">
       {filteredFeatures(features, filter).map((feature, i) => (
