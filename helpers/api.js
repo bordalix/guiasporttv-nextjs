@@ -34,7 +34,7 @@ function normalizeData(feature) {
   }
 }
 
-export async function getFeatures(filter) {
+export async function getFeatures() {
   const res = await fetch(apiURL())
   const features = await res.json()
   return features.map(f => normalizeData(f))
